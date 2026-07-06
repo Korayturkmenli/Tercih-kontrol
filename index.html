@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tercih Kontrol</title>
 
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
+}
+.container{
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    font-size:18px;
+}
+button{
+    background:#1976d2;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+.result{
+    margin-top:20px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>🏥 Tercih Kontrol</h2>
+
+<input id="sira" type="number" placeholder="Sıra Numaran">
+
+<button onclick="kontrol()">Kontrol Et</button>
+
+<div class="result" id="sonuc"></div>
+
+</div>
+
+<script>
+
+const veriler = {
+87:[
+["Ankara Etlik",14],
+["İzmir Şehir",52],
+["Bursa Şehir",3],
+["Konya",18],
+["Adana",1],
+["Kayseri",7]
+]
+};
+
+function kontrol(){
+
+let s=document.getElementById("sira").value;
+
+if(!veriler[s]){
+document.getElementById("sonuc").innerHTML="Veri bulunamadı.";
+return;
+}
+
+let html="";
+
+veriler[s].forEach((t,i)=>{
+
+html+=`
+<h3>${i+1}. ${t[0]}</h3>
+<p>Önünde <b>${t[1]}</b> kişi yazmış.</p>
+<hr>
+`;
+
+});
+
+document.getElementById("sonuc").innerHTML=html;
+
+}
+
+</script>
+
+</body>
+</html>
